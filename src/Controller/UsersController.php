@@ -20,11 +20,13 @@ class UsersController extends AppController
      */
     public function index()
     {
-        $this->paginate = array(
+        //Giới hạn record
+        $this->paginate =[
             'limit' => 10,
-        );
+        ];
+        //Phân trang
         $users = $this->paginate($this->Users);
-
+        //$users = $this->Users->find();
         $this->set(compact('users'));
     }
 
@@ -40,7 +42,7 @@ class UsersController extends AppController
         $user = $this->Users->get($id, [
             'contain' => []
         ]);
-
+        //Hàm $this -> set('user', $user) gán giá trị mảng $user vào biến user để có thể hiển thị phía view tương đương.
         $this->set('user', $user);
     }
 
@@ -88,6 +90,15 @@ class UsersController extends AppController
         $this->set(compact('user'));
     }
 
+    public function login(){
+        
+    }
+
+    public function signup()
+    {
+
+    }
+    
     /**
      * Delete method
      *
